@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .user-card {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .user-info {
+      margin-top: 5px;
+      color: #555;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <div class="container">
+    <% if (users.length === 0) { %>
+      <p>No users found.</p>
+    <% } else { %>
+      <% users.forEach(user => { %>
+        <div class="user-card">
+          <strong><%= user.firstName %> <%= user.lastName %></strong> (ID: <%= user.id %>)<br>
+          <div class="user-info">
+            <strong>Email:</strong> <%= user.email || "N/A" %><br>
+            <strong>Age:</strong> <%= user.age || "N/A" %><br>
+            <strong>Bio:</strong> <%= user.bio || "No bio provided." %>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

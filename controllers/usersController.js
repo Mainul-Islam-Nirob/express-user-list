@@ -88,3 +88,22 @@ exports.usersDeletePost = (req, res) => {
   res.redirect("/");
 };
 
+
+exports.usersSearchGet = (req, res) => {
+  const query = req.query.query?.toLowerCase().trim() || "";
+  const allUsers = usersStorage.getUsers();
+
+  const results = allUsers.filter(user => {
+    const fullName = (user.firstName + " " + user.lastName).toLowerCase();
+    const email = user.email?.toLowerCase() || "";
+    return fullName.includes(query) || email.includes(query);
+  });
+
+  res.render("search", {
+    title: "Search Results",
+    users: results
+  });
+};
+
+
+
