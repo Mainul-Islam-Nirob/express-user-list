@@ -1,8 +1,15 @@
-<!-- views/partials/errors.ejs -->
-<% if (locals.errors) {%>
-  <ul>
+<% if (locals.errors && errors.length > 0) { %>
+  <ul style="
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    list-style-type: none;
+  ">
     <% errors.forEach(function(error) { %>
-      <li><%= error.msg %></li>
+      <li>⚠️ <%= error.msg %></li>
     <% }); %>
   </ul>
 <% } %>
